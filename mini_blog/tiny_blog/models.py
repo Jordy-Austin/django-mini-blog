@@ -6,10 +6,12 @@ from django.db import models
 class User(models.Model):
     name = models.CharField(max_length=50)
     bio = models.CharField(max_length=500, blank=True)
+    class Meta:
+        permissions = (("is_blogger", "Sets User as Blogger"),)  
 
 
 class Comment(models.Model):
-    text = models.CharField(max_length=500)
+    description = models.CharField(max_length=500)
     post_date = models.DateTimeField(auto_now_add=True)
 
 
